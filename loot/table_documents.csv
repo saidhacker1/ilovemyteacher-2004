@@ -1,0 +1,9 @@
+id,user_id,filename,content,classification
+1,8,passport_scan.txt,EJPT{idor_document_06} - PASSPORT: AA1234567,PRIVATE
+2,9,salary_2024.txt,"Salary review notes, confidential.",PRIVATE
+3,1,admin_manual.txt,Admin manual: /administrator.php is the real panel.,INTERNAL
+4,12,api_keys.txt,AKIA-LAB-1012 / AKIA-LAB-1001,SECRET
+5,15,network_map.txt,"10.10.10.0/24 lab range, 2004 web.",INTERNAL
+6,20,flag_note.txt,EJPT{path_traversal_11} - traversal works.,SECRET
+7,22,backup_hint.txt,/backups/app.py.bak contains source.,INTERNAL
+8,25,token.txt,EJPT{broken_auth_44} - token never expires.,SECRET

@@ -1,0 +1,46 @@
+id,name,endpoint,method,difficulty,description,expected
+1,SQL Injection (UNION-based),GET /product?id=1,GET,Easy,Mahsulot ID parametri to'g'ridan-to'g'ri SQL so'rovga qo'shiladi.,UNION SELECT orqali users jadvalidan hash olish.
+2,SQL Injection (Boolean-based),GET /product?id=1,GET,Medium,AND 1=1 / AND 1=2 javoblari farq qiladi.,True/False javob orqali ma'lumot chiqarish.
+3,SQL Injection (Error-based),GET /product?id=1',GET,Easy,Xato matni baza strukturasi va so'rovni ko'rsatadi.,SQLite xato xabari sahifada ko'rinadi.
+4,Authentication Bypass,POST /login,POST,Easy,Login SQL so'rovi string konkatensatsiya bilan quriladi.,admin' -- bilan parolsiz kirish.
+5,IDOR (Profile),GET /api/user/1,GET,Easy,"Foydalanuvchi ID to'g'ridan-to'g'ri obyektga bog'langan, avtorizatsiya yo'q.","Boshqa foydalanuvchi ma'lumotlari (hash, card) ko'rinadi."
+6,IDOR (Document),GET /documents/1,GET,Medium,Hujjat egasi tekshirilmaydi.,Maxfiy hujjat mazmuni va flag olinadi.
+7,IDOR (Predictable IDs),GET /invoice/1,GET,Easy,Invoys ID ketma-ket.,/invoice/1..20 barcha to'lovlar ko'rinadi.
+8,Reflected XSS,GET /search?q=<script>alert(1)</script>,GET,Easy,q parametri HTML escape qilinmasdan chiqariladi.,Brauzerda JS bajariladi.
+9,Stored XSS,POST /blog/comment,POST,Medium,Izohlar bazaga saqlanadi va xom holda render qilinadi.,Har bir tashrif buyuruvchida JS ishlaydi.
+10,DOM-based XSS,GET /domxss#<img src=x onerror=alert(1)>,GET,Medium,location.hash innerHTML ga yoziladi.,Client-side JS bajariladi.
+11,Path Traversal,GET /download?file=../app.py,GET,Medium,Fayl nomi normalize qilinmaydi.,Ish katalogidagi fayllar o'qiladi.
+12,Local File Inclusion,GET /page?name=about,GET,Medium,Sahifa nomi fayl sifatida include qilinadi.,?name=../lab_files/secret.txt mazmuni chiqadi.
+13,CSRF (Email),POST /settings/email,POST,Easy,Tokenni tekshirish yo'q.,CSRF PoC bilan email o'zgartiriladi.
+14,CSRF (Transfer),POST /transfer,POST,Medium,Pul o'tkazmasi CSRF tokenisiz.,Balans boshqa hisobga o'tadi.
+15,Open Redirect,GET /redirect?url=https://evil.com,GET,Easy,url parametri tekshirilmaydi.,302 Location: attacker sayt.
+16,Broken Access Control,GET /admin,GET,Easy,Admin panel uchun hech qanday tekshiruv yo'q.,"Barcha userlar, hash, flag ko'rinadi."
+17,Broken Access Control (API),GET /api/admin/users,GET,Easy,Admin API avtorizatsiyasiz.,To'liq userlar ro'yxati JSON.
+18,Weak Session Management,POST /api/login,POST,Medium,"Cookie'da uid va role ochiq matnda, HttpOnly yo'q.",Cookie'ni qo'lda o'zgartirish mumkin.
+19,Cookie Manipulation,GET /dashboard,GET,Medium,Dashboard role cookie'siga ishonadi.,role=admin qilib admin panelga o'tiladi.
+20,Information Disclosure,GET /server-info,GET,Easy,"Server konfiguratsiyasi, yo'llar, versiyalar oshkor.",Env va path ma'lumotlari.
+21,Directory Listing,GET /files/,GET,Easy,Katalog ichidagi fayllar ro'yxati chiqadi.,Yashirin fayllar topiladi.
+22,Backup File Exposure,GET /backups/,GET,Medium,app.py.bak va db.sql ochiq.,Manba kod va DB dump yuklab olinadi.
+23,Insecure File Upload,POST /upload,POST,Medium,Fayl turi va nomi tekshirilmaydi.,.html/.php yuklanadi va /uploads/ dan ochiladi.
+24,Weak Password Hashing,GET /api/user/1,GET,Easy,MD5 salt'siz ishlatiladi.,Hash crack (hashcat/john) bilan parol topiladi.
+25,Hash Exposure,GET /api/v1/users,GET,Easy,API barcha hash'larni qaytaradi.,MD5 + SHA1 birga olinadi.
+26,Hardcoded Credentials,GET /api/config,GET,Easy,"JWT secret, DB parol, admin parol kodda.",Konfiguratsiya JSON sifatida olinadi.
+27,JWT alg=none,POST /api/jwt/me,POST,Hard,Imzo tekshirilmaydi agar alg=none bo'lsa.,Token forge qilib admin bo'linadi.
+28,JWT Weak Secret,POST /api/jwt/me,POST,Hard,Secret 'secret' ham qabul qilinadi.,hashcat -m 16500 bilan secret topiladi.
+29,API Auth Weakness,GET /api/v1/users?api_key=AKIA-EJPT-LAB-0001,GET,Easy,Master API key URL'da va hamma joyda ishlaydi.,Key'siz ham ?api_key= bilan kirish.
+30,Excessive Data Exposure,GET /api/v1/users,GET,Easy,"API ortiqcha maydonlarni qaytaradi (ssn, card).",Moliyaviy ma'lumotlar oshkor.
+31,Verbose Error Messages,GET /product?id=x,GET,Easy,Traceback foydalanuvchiga ko'rsatiladi.,Stack trace va fayl yo'llari.
+32,Security Misconfiguration,GET /debug,GET,Medium,Debug sahifa env va configni ko'rsatadi.,Ichki sozlamalar oshkor.
+33,CORS Misconfiguration,OPTIONS /api/v1/users,OPTIONS,Medium,ACAO: * + Allow-Credentials: true.,Cross-origin credential bilan o'qish.
+34,HTTP Method Misconfiguration,GET /api/v1/delete_user?id=8,GET,Easy,O'chirish GET bilan ishlaydi.,GET so'rov bilan user o'chiriladi.
+35,Missing Security Headers,GET /,GET,Easy,"CSP, HSTS, X-Frame-Options yo'q.",Nikto/curl -I bilan tasdiqlanadi.
+36,Weak Password Reset,GET /reset-password?email=alice@ejpt.lab&token=<md5(email)>&password=NewPass1,GET,Hard,"Token = md5(email), muddati yo'q.",Har qanday user parolini almashtirish.
+37,Mass Assignment,POST /api/profile/update,POST,Hard,"JSON barcha maydonlarni yangilaydi, role ham.","{""uid"":8,""role"":""admin""} -> admin."
+38,Rate Limiting Weakness,GET /api/otp/verify?user=admin&code=1234,GET,Medium,"Cheksiz urinish, OTP qisqa va predictab.",Brute force bilan OTP topiladi.
+39,Hidden Admin Panel,GET /administrator.php,GET,Medium,Yashirin panel avtorizatsiyasiz.,Faqat endpoint nomini topish kerak.
+40,Sensitive Information Exposure,GET /api/debug/env,GET,Easy,Environment o'zgaruvchilari ochiq.,"SECRET_KEY, JWT secret."
+41,Insecure Database Design,GET /api/v1/orders,GET,Easy,Karta raqamlari plaintext.,"PCI-DSS buzilishi, karta ma'lumotlari."
+42,Broken Authentication,GET /api/v1/me?token=...,GET,Medium,"Token muddati yo'q, bekor qilinmaydi.",Eski token abadiy ishlaydi.
+43,User Enumeration,GET /api/check-user?username=admin,GET,Easy,Mavjud/mavjud emas javobi farq qiladi.,Username ro'yxati tuziladi.
+44,GraphQL Introspection,POST /graphql,POST,Medium,"Introspection yoqilgan, auth yo'q.",{__schema{types{name}}} bilan sxema olinadi.
+45,Server Info Disclosure,GET /,GET,Easy,Server/X-Powered-By header'lari.,Werkzeug versiyasi aniqlanadi.

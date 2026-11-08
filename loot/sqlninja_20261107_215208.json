@@ -1,0 +1,1291 @@
+{
+  "tool": "SQLNinja v2.0",
+  "target": "http://127.0.0.1:2004/product",
+  "param": "id",
+  "findings": {
+    "error_based": true,
+    "boolean_based": true,
+    "columns": 4,
+    "db_file": "/data/data/com.termux/files/home/teacher/lab.db",
+    "tables_count": "14"
+  },
+  "fingerprint": {
+    "dbms": "SQLite",
+    "version": "3.53.2"
+  },
+  "tables": {
+    "users": [
+      "id",
+      "username",
+      "password_md5",
+      "password_sha1",
+      "email",
+      "role",
+      "full_name",
+      "api_key",
+      "ssn",
+      "credit_card",
+      "balance",
+      "is_active",
+      "created_at"
+    ],
+    "products": [
+      "id",
+      "name",
+      "price",
+      "description"
+    ],
+    "notes": [
+      "id",
+      "user_id",
+      "title",
+      "content",
+      "is_private"
+    ],
+    "orders": [
+      "id",
+      "user_id",
+      "product",
+      "amount",
+      "status",
+      "card_number",
+      "created_at"
+    ],
+    "invoices": [
+      "id",
+      "user_id",
+      "reference",
+      "amount",
+      "paid"
+    ],
+    "documents": [
+      "id",
+      "user_id",
+      "filename",
+      "content",
+      "classification"
+    ],
+    "comments": [
+      "id",
+      "user_id",
+      "author",
+      "content",
+      "created_at"
+    ],
+    "flags": [
+      "id",
+      "code",
+      "name",
+      "category",
+      "difficulty",
+      "points"
+    ],
+    "challenges": [
+      "id",
+      "name",
+      "endpoint",
+      "method",
+      "difficulty",
+      "description",
+      "expected"
+    ],
+    "logs": [
+      "id",
+      "ts",
+      "ip",
+      "method",
+      "path",
+      "level",
+      "message"
+    ],
+    "sessions": [
+      "id",
+      "user_id",
+      "token",
+      "created_at"
+    ],
+    "reset_tokens": [
+      "email",
+      "token",
+      "created_at"
+    ],
+    "otp": [
+      "username",
+      "code"
+    ],
+    "api_tokens": [
+      "id",
+      "user_id",
+      "token",
+      "created_at"
+    ]
+  },
+  "data": {
+    "users": [
+      {
+        "id": "1",
+        "username": "admin",
+        "password_md5": "0192023a7bbd73250516f069df18b500",
+        "password_sha1": "f865b53623b121fd34ee5426c792e5c33af8c227",
+        "email": "admin@ejpt.lab",
+        "role": "admin",
+        "full_name": "Alisher Karimov",
+        "api_key": "AKIA-LAB-1001",
+        "ssn": "732-78-6994",
+        "credit_card": "4992565463516618",
+        "balance": "3526.12",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.467673"
+      },
+      {
+        "id": "2",
+        "username": "root",
+        "password_md5": "7b24afc8bc80e548d66c4e7ff72171c5",
+        "password_sha1": "435b41068e8665513a20070c033b08b9c66e4332",
+        "email": "root@ejpt.lab",
+        "role": "admin",
+        "full_name": "Root Operator",
+        "api_key": "AKIA-LAB-1002",
+        "ssn": "456-61-7608",
+        "credit_card": "4405917325979438",
+        "balance": "429.77",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.468540"
+      },
+      {
+        "id": "3",
+        "username": "sysadmin",
+        "password_md5": "161ebd7d45089b3446ee4e0d86dbcf92",
+        "password_sha1": "21bd12dc183f740ee76f27b78eb39c8ad972a757",
+        "email": "sysadmin@ejpt.lab",
+        "role": "admin",
+        "full_name": "Dilshod Rahimov",
+        "api_key": "AKIA-LAB-1003",
+        "ssn": "638-89-1718",
+        "credit_card": "4169003314379509",
+        "balance": "1734.6",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.468678"
+      },
+      {
+        "id": "4",
+        "username": "moderator",
+        "password_md5": "7da612c97fe645201451db5c7e9122a5",
+        "password_sha1": "45ec342af28e206619ecda5de5ffb592c80abef1",
+        "email": "moderator@ejpt.lab",
+        "role": "moderator",
+        "full_name": "Madina Yusupova",
+        "api_key": "AKIA-LAB-1004",
+        "ssn": "685-39-1750",
+        "credit_card": "4843928882079708",
+        "balance": "2489.18",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.468755"
+      },
+      {
+        "id": "5",
+        "username": "mod_john",
+        "password_md5": "17817d22411f71469ae6cae66f226d34",
+        "password_sha1": "b3c81264c533c11cd6b5a8c7aed0975fcd90b61f",
+        "email": "john@ejpt.lab",
+        "role": "moderator",
+        "full_name": "John Smith",
+        "api_key": "AKIA-LAB-1005",
+        "ssn": "870-93-6777",
+        "credit_card": "4894412025137840",
+        "balance": "2817.22",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.468827"
+      },
+      {
+        "id": "6",
+        "username": "mod_olga",
+        "password_md5": "3fc0a7acf087f549ac2b266baf94b8b1",
+        "password_sha1": "5cec175b165e3d5e62c9e13ce848ef6feac81bff",
+        "email": "olga@ejpt.lab",
+        "role": "moderator",
+        "full_name": "Olga Petrova",
+        "api_key": "AKIA-LAB-1006",
+        "ssn": "537-54-1702",
+        "credit_card": "4642075613594332",
+        "balance": "2471.93",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.468895"
+      },
+      {
+        "id": "7",
+        "username": "mod_aziz",
+        "password_md5": "8a0e4354502989b29aaa42ce5ec51c05",
+        "password_sha1": "e6b86cb12d03649363f288a976c213f80b72d035",
+        "email": "aziz@ejpt.lab",
+        "role": "moderator",
+        "full_name": "Aziz Toshpulatov",
+        "api_key": "AKIA-LAB-1007",
+        "ssn": "727-64-5143",
+        "credit_card": "4235693962795008",
+        "balance": "3039.74",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.468961"
+      },
+      {
+        "id": "8",
+        "username": "alice",
+        "password_md5": "7abdccbea8473767e91378e37850d296",
+        "password_sha1": "f0bd251b08338c230d420f33106faf13a12cace5",
+        "email": "alice@ejpt.lab",
+        "role": "user",
+        "full_name": "Alice Johnson",
+        "api_key": "AKIA-LAB-1008",
+        "ssn": "756-65-6028",
+        "credit_card": "4856534796629436",
+        "balance": "4084.25",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469026"
+      },
+      {
+        "id": "9",
+        "username": "bob",
+        "password_md5": "77aed492c6707e62863e0a0e25fc0c8c",
+        "password_sha1": "3f3fc4af92754d7f735256a357ba8a85d52463f1",
+        "email": "bob@ejpt.lab",
+        "role": "user",
+        "full_name": "Bob Brown",
+        "api_key": "AKIA-LAB-1009",
+        "ssn": "187-68-1047",
+        "credit_card": "4514789620896371",
+        "balance": "3368.28",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469092"
+      },
+      {
+        "id": "10",
+        "username": "charlie",
+        "password_md5": "b6a412f7c63d71e4117daeb14e63f5cd",
+        "password_sha1": "65b3dd225fe19c6a9ec4383161ea00fe0f161157",
+        "email": "charlie@ejpt.lab",
+        "role": "user",
+        "full_name": "Charlie Davis",
+        "api_key": "AKIA-LAB-1010",
+        "ssn": "408-16-9055",
+        "credit_card": "4358549128908740",
+        "balance": "828.55",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469157"
+      },
+      {
+        "id": "11",
+        "username": "diana",
+        "password_md5": "ca7669cfc26196d72f7d5297cf1bc606",
+        "password_sha1": "170f6f29d1d11a3433ea9e1635b5252d0e47a9d4",
+        "email": "diana@ejpt.lab",
+        "role": "user",
+        "full_name": "Diana Prince",
+        "api_key": "AKIA-LAB-1011",
+        "ssn": "577-20-9010",
+        "credit_card": "4702323307764506",
+        "balance": "1830.06",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469222"
+      },
+      {
+        "id": "12",
+        "username": "emil",
+        "password_md5": "1505c18726808be3005f22a933be390b",
+        "password_sha1": "97c8aacbd19e422cdf09854e81003d0de7db9204",
+        "email": "emil@ejpt.lab",
+        "role": "user",
+        "full_name": "Emil Karimov",
+        "api_key": "AKIA-LAB-1012",
+        "ssn": "745-23-3783",
+        "credit_card": "4104323112869930",
+        "balance": "2210.08",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469287"
+      },
+      {
+        "id": "13",
+        "username": "farida",
+        "password_md5": "7f239fc72efbd50fbc13280a4037b587",
+        "password_sha1": "5073bb9b9b38e91b61d3beb56102f4b892b07d0b",
+        "email": "farida@ejpt.lab",
+        "role": "user",
+        "full_name": "Farida Nazarova",
+        "api_key": "AKIA-LAB-1013",
+        "ssn": "796-63-6378",
+        "credit_card": "4877311125496003",
+        "balance": "390.06",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469350"
+      },
+      {
+        "id": "14",
+        "username": "guli",
+        "password_md5": "b3dc9524e002cc30e8da69a9a5d90b05",
+        "password_sha1": "0281eb6d3e4a3c1681c300daf79d290a7eda5967",
+        "email": "guli@ejpt.lab",
+        "role": "user",
+        "full_name": "Gulnora Azizova",
+        "api_key": "AKIA-LAB-1014",
+        "ssn": "663-24-7524",
+        "credit_card": "4488420647505090",
+        "balance": "537.09",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469414"
+      },
+      {
+        "id": "15",
+        "username": "hasan",
+        "password_md5": "f690d3b8d4b51c1f189d886b7bab26b7",
+        "password_sha1": "37becb6cd5d0f5d540386b3db2a91e322c637646",
+        "email": "hasan@ejpt.lab",
+        "role": "user",
+        "full_name": "Hasan Tursunov",
+        "api_key": "AKIA-LAB-1015",
+        "ssn": "910-16-7129",
+        "credit_card": "4696672072316318",
+        "balance": "3234.5",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469476"
+      },
+      {
+        "id": "16",
+        "username": "ibrohim",
+        "password_md5": "0029b49deff7048f10fe8d1d7918c424",
+        "password_sha1": "12f3bb3aa67b3eecd115998532ca6ed473bac923",
+        "email": "ibrohim@ejpt.lab",
+        "role": "user",
+        "full_name": "Ibrohim Sobirov",
+        "api_key": "AKIA-LAB-1016",
+        "ssn": "903-30-7846",
+        "credit_card": "4391382606884154",
+        "balance": "353.35",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469540"
+      },
+      {
+        "id": "17",
+        "username": "jamila",
+        "password_md5": "061cb35fb58ff899f7142320e601fe54",
+        "password_sha1": "a77df00218fa9ac12ac14060d774d25b16a3dce7",
+        "email": "jamila@ejpt.lab",
+        "role": "user",
+        "full_name": "Jamila Ergasheva",
+        "api_key": "AKIA-LAB-1017",
+        "ssn": "826-72-7009",
+        "credit_card": "4505995318006860",
+        "balance": "4024.27",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469604"
+      },
+      {
+        "id": "18",
+        "username": "kamol",
+        "password_md5": "49ce2fbfb6088b4e68340ffee9af6fd6",
+        "password_sha1": "8e99c317a9e6d1f5d27eaa5589b1c39184d20118",
+        "email": "kamol@ejpt.lab",
+        "role": "user",
+        "full_name": "Kamol Ismoilov",
+        "api_key": "AKIA-LAB-1018",
+        "ssn": "100-92-1669",
+        "credit_card": "4967159897883179",
+        "balance": "3400.31",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469667"
+      },
+      {
+        "id": "19",
+        "username": "laylo",
+        "password_md5": "dea88d2eabf954e8ab548b84365b8667",
+        "password_sha1": "bb05b8b887ac2f5dd0c57487247a8dd21a296716",
+        "email": "laylo@ejpt.lab",
+        "role": "user",
+        "full_name": "Laylo Sharipova",
+        "api_key": "AKIA-LAB-1019",
+        "ssn": "890-56-7091",
+        "credit_card": "4022139622346751",
+        "balance": "1929.53",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469730"
+      },
+      {
+        "id": "20",
+        "username": "mansur",
+        "password_md5": "7249fa3980c08f909ac4ee0faef483b7",
+        "password_sha1": "b33998d0f7ec935940984a87501ad3983e2968ff",
+        "email": "mansur@ejpt.lab",
+        "role": "user",
+        "full_name": "Mansur Qodirov",
+        "api_key": "AKIA-LAB-1020",
+        "ssn": "321-30-8738",
+        "credit_card": "4481474213222000",
+        "balance": "1262.58",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469795"
+      },
+      {
+        "id": "21",
+        "username": "nargiza",
+        "password_md5": "51cc380cfb82c7778585a07c09480ebd",
+        "password_sha1": "f4e636a4b1fe489d29402e23d0642259efc72326",
+        "email": "nargiza@ejpt.lab",
+        "role": "user",
+        "full_name": "Nargiza Yuldasheva",
+        "api_key": "AKIA-LAB-1021",
+        "ssn": "460-25-6077",
+        "credit_card": "4318698966132538",
+        "balance": "4969.41",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.469858"
+      },
+      {
+        "id": "22",
+        "username": "olim",
+        "password_md5": "029bf3898019637cd5fc209357d3e916",
+        "password_sha1": "a03d029f825b30aab087324ec381e302e35a6e47",
+        "email": "olim@ejpt.lab",
+        "role": "user",
+        "full_name": "Olim Rasulov",
+        "api_key": "AKIA-LAB-1022",
+        "ssn": "158-41-2645",
+        "credit_card": "4485454046551894",
+        "balance": "2726.22",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470029"
+      },
+      {
+        "id": "23",
+        "username": "parvina",
+        "password_md5": "6d6814105a1c94498842ec9c3aab1cda",
+        "password_sha1": "2d8acf7ef9bac2a04c1d810bff3fd37d93292bd6",
+        "email": "parvina@ejpt.lab",
+        "role": "user",
+        "full_name": "Parvina Saidova",
+        "api_key": "AKIA-LAB-1023",
+        "ssn": "135-51-1817",
+        "credit_card": "4267795296807193",
+        "balance": "4400.56",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470112"
+      },
+      {
+        "id": "24",
+        "username": "qodir",
+        "password_md5": "f619366092487a6bfb09f801f21f832f",
+        "password_sha1": "a836da2069e2c2f759a158fc6a589f004197cec4",
+        "email": "qodir@ejpt.lab",
+        "role": "user",
+        "full_name": "Qodir Zokirov",
+        "api_key": "AKIA-LAB-1024",
+        "ssn": "648-59-6085",
+        "credit_card": "4387996979266621",
+        "balance": "1381.68",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470182"
+      },
+      {
+        "id": "25",
+        "username": "rustam",
+        "password_md5": "f1c42170a70f58e349ac1c995a9c6a84",
+        "password_sha1": "76a103a48bfbe344eb3800b3b11a3e5c89c86496",
+        "email": "rustam@ejpt.lab",
+        "role": "user",
+        "full_name": "Rustam Bekmurodov",
+        "api_key": "AKIA-LAB-1025",
+        "ssn": "232-42-5434",
+        "credit_card": "4841192256281286",
+        "balance": "3524.57",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470247"
+      },
+      {
+        "id": "26",
+        "username": "sabina",
+        "password_md5": "3f06c9f725627d1686d9a7bd0c2ec0cd",
+        "password_sha1": "a250c9ff30dbace080917e4ddca8659d8aa5da6d",
+        "email": "sabina@ejpt.lab",
+        "role": "user",
+        "full_name": "Sabina Umarova",
+        "api_key": "AKIA-LAB-1026",
+        "ssn": "455-95-8108",
+        "credit_card": "4804166987010932",
+        "balance": "1234.65",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470311"
+      },
+      {
+        "id": "27",
+        "username": "temur",
+        "password_md5": "dbdeb9e5e24290464cb5a29a26d4237d",
+        "password_sha1": "248cdff9ecec2961299d1c1b1dbb5e39cde84b6f",
+        "email": "temur@ejpt.lab",
+        "role": "user",
+        "full_name": "Temur Aliyev",
+        "api_key": "AKIA-LAB-1027",
+        "ssn": "169-13-1907",
+        "credit_card": "4909890952953494",
+        "balance": "4694.76",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470378"
+      },
+      {
+        "id": "28",
+        "username": "umid",
+        "password_md5": "219d486d12af2d0be924d3d1729f4e7b",
+        "password_sha1": "2d4965f417b6439a9bfdbc602bfac7be110bb709",
+        "email": "umid@ejpt.lab",
+        "role": "user",
+        "full_name": "Umid Xolmatov",
+        "api_key": "AKIA-LAB-1028",
+        "ssn": "415-88-7471",
+        "credit_card": "4520896166637130",
+        "balance": "3561.74",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470442"
+      },
+      {
+        "id": "29",
+        "username": "vali",
+        "password_md5": "df2a6ec51ae3f6dfb3df7db603a85cb5",
+        "password_sha1": "51b64bab509121dbfe516c59059f83d80f8de9a3",
+        "email": "vali@ejpt.lab",
+        "role": "user",
+        "full_name": "Vali Ergashev",
+        "api_key": "AKIA-LAB-1029",
+        "ssn": "630-33-7599",
+        "credit_card": "4499547210845704",
+        "balance": "2884.04",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470505"
+      },
+      {
+        "id": "30",
+        "username": "zulfiya",
+        "password_md5": "512297bf266b705d02295a6986454050",
+        "password_sha1": "0be0e3c14ebd5ccff71f3882b12b4311cbb67915",
+        "email": "zulfiya@ejpt.lab",
+        "role": "user",
+        "full_name": "Zulfiya Nazarova",
+        "api_key": "AKIA-LAB-1030",
+        "ssn": "637-71-7444",
+        "credit_card": "4150038949747280",
+        "balance": "4722.07",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470567"
+      },
+      {
+        "id": "31",
+        "username": "nodira",
+        "password_md5": "00d3f21a91fdc8b1dcef5429e55e3da6",
+        "password_sha1": "3c0a8c3fa77aff74b2378570f90b66cc825dcec6",
+        "email": "nodira@ejpt.lab",
+        "role": "user",
+        "full_name": "Nodira Karimova",
+        "api_key": "AKIA-LAB-1031",
+        "ssn": "846-50-8556",
+        "credit_card": "4698903782744927",
+        "balance": "2711.73",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470630"
+      },
+      {
+        "id": "32",
+        "username": "testuser",
+        "password_md5": "cc03e747a6afbbcbf8be7668acfebee5",
+        "password_sha1": "7288edd0fc3ffcbe93a0cf06e3568e28521687bc",
+        "email": "test@ejpt.lab",
+        "role": "user",
+        "full_name": "Test User",
+        "api_key": "AKIA-LAB-1032",
+        "ssn": "415-60-9849",
+        "credit_card": "4798866025196518",
+        "balance": "4686.61",
+        "is_active": "1",
+        "created_at": "2026-11-07T16:41:18.470692"
+      }
+    ],
+    "flags": [
+      {
+        "id": "1",
+        "code": "EJPT{sqli_union_01}",
+        "name": "SQLi UNION-based",
+        "category": "SQL Injection",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "2",
+        "code": "EJPT{sqli_boolean_02}",
+        "name": "SQLi Boolean-based",
+        "category": "SQL Injection",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "3",
+        "code": "EJPT{sqli_error_03}",
+        "name": "SQLi Error-based",
+        "category": "SQL Injection",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "4",
+        "code": "EJPT{auth_bypass_04}",
+        "name": "Login Auth Bypass",
+        "category": "Auth",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "5",
+        "code": "EJPT{idor_profile_05}",
+        "name": "IDOR Profile Read",
+        "category": "Access Control",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "6",
+        "code": "EJPT{idor_document_06}",
+        "name": "IDOR Document Read",
+        "category": "Access Control",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "7",
+        "code": "EJPT{idor_invoice_07}",
+        "name": "IDOR Predictable Invoice",
+        "category": "Access Control",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "8",
+        "code": "EJPT{reflected_xss_08}",
+        "name": "Reflected XSS",
+        "category": "XSS",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "9",
+        "code": "EJPT{stored_xss_09}",
+        "name": "Stored XSS",
+        "category": "XSS",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "10",
+        "code": "EJPT{dom_xss_10}",
+        "name": "DOM-based XSS",
+        "category": "XSS",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "11",
+        "code": "EJPT{path_traversal_11}",
+        "name": "Path Traversal",
+        "category": "File",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "12",
+        "code": "EJPT{lfi_12}",
+        "name": "Local File Inclusion",
+        "category": "File",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "13",
+        "code": "EJPT{csrf_email_13}",
+        "name": "CSRF Email Change",
+        "category": "CSRF",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "14",
+        "code": "EJPT{csrf_transfer_14}",
+        "name": "CSRF Money Transfer",
+        "category": "CSRF",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "15",
+        "code": "EJPT{open_redirect_15}",
+        "name": "Open Redirect",
+        "category": "Web",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "16",
+        "code": "EJPT{bac_admin_16}",
+        "name": "Broken Access Control /admin",
+        "category": "Access Control",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "17",
+        "code": "EJPT{weak_session_17}",
+        "name": "Weak Session Management",
+        "category": "Session",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "18",
+        "code": "EJPT{cookie_admin_18}",
+        "name": "Cookie Manipulation -> Admin",
+        "category": "Session",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "19",
+        "code": "EJPT{info_disclosure_19}",
+        "name": "Info Disclosure /server-info",
+        "category": "Info Leak",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "20",
+        "code": "EJPT{dir_listing_20}",
+        "name": "Directory Listing",
+        "category": "Info Leak",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "21",
+        "code": "EJPT{backup_exposure_21}",
+        "name": "Backup File Exposure",
+        "category": "Info Leak",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "22",
+        "code": "EJPT{upload_bypass_22}",
+        "name": "Unrestricted File Upload",
+        "category": "File",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "23",
+        "code": "EJPT{weak_md5_23}",
+        "name": "MD5 Unsalted Hashing",
+        "category": "Crypto",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "24",
+        "code": "EJPT{hash_exposure_24}",
+        "name": "Hash Exposure via API",
+        "category": "Info Leak",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "25",
+        "code": "EJPT{hardcoded_creds_25}",
+        "name": "Hardcoded Credentials",
+        "category": "Info Leak",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "26",
+        "code": "EJPT{jwt_alg_none_26}",
+        "name": "JWT alg=none",
+        "category": "JWT",
+        "difficulty": "Hard",
+        "points": "100"
+      },
+      {
+        "id": "27",
+        "code": "EJPT{jwt_weak_secret_27}",
+        "name": "JWT Weak Secret",
+        "category": "JWT",
+        "difficulty": "Hard",
+        "points": "100"
+      },
+      {
+        "id": "28",
+        "code": "EJPT{api_key_leak_28}",
+        "name": "API Key in URL",
+        "category": "API",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "29",
+        "code": "EJPT{excessive_data_29}",
+        "name": "Excessive Data Exposure",
+        "category": "API",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "30",
+        "code": "EJPT{verbose_error_30}",
+        "name": "Verbose Error Messages",
+        "category": "Config",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "31",
+        "code": "EJPT{misconfig_31}",
+        "name": "Security Misconfiguration",
+        "category": "Config",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "32",
+        "code": "EJPT{cors_32}",
+        "name": "CORS Misconfiguration",
+        "category": "Config",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "33",
+        "code": "EJPT{http_method_33}",
+        "name": "HTTP Method Misconfig",
+        "category": "Config",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "34",
+        "code": "EJPT{no_headers_34}",
+        "name": "Missing Security Headers",
+        "category": "Config",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "35",
+        "code": "EJPT{pwd_reset_35}",
+        "name": "Weak Password Reset",
+        "category": "Auth",
+        "difficulty": "Hard",
+        "points": "100"
+      },
+      {
+        "id": "36",
+        "code": "EJPT{mass_assign_36}",
+        "name": "Mass Assignment",
+        "category": "API",
+        "difficulty": "Hard",
+        "points": "100"
+      },
+      {
+        "id": "37",
+        "code": "EJPT{rate_limit_37}",
+        "name": "No Rate Limiting OTP",
+        "category": "Auth",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "38",
+        "code": "EJPT{hidden_admin_38}",
+        "name": "Hidden Admin Panel",
+        "category": "Access Control",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "39",
+        "code": "EJPT{db_design_39}",
+        "name": "Insecure DB Design",
+        "category": "DB",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "40",
+        "code": "EJPT{user_enum_40}",
+        "name": "User Enumeration",
+        "category": "Auth",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "41",
+        "code": "EJPT{predictable_ids_41}",
+        "name": "Predictable Resource IDs",
+        "category": "Access Control",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "42",
+        "code": "EJPT{graphql_42}",
+        "name": "GraphQL Introspection",
+        "category": "API",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "43",
+        "code": "EJPT{server_banner_43}",
+        "name": "Server Banner Disclosure",
+        "category": "Info Leak",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "44",
+        "code": "EJPT{broken_auth_44}",
+        "name": "Broken Auth / No Expiry",
+        "category": "Auth",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "45",
+        "code": "EJPT{session_forge_45}",
+        "name": "Session Forgery",
+        "category": "Session",
+        "difficulty": "Hard",
+        "points": "100"
+      },
+      {
+        "id": "46",
+        "code": "EJPT{log_injection_46}",
+        "name": "Log Injection",
+        "category": "Web",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "47",
+        "code": "EJPT{api_ssrf_47}",
+        "name": "API Improper Input Handling",
+        "category": "API",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "48",
+        "code": "EJPT{admin_note_48}",
+        "name": "Admin Secret Note",
+        "category": "Access Control",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "49",
+        "code": "EJPT{config_file_48}",
+        "name": "Config File Leak",
+        "category": "Info Leak",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "50",
+        "code": "EJPT{db_dump_49}",
+        "name": "Database Dump",
+        "category": "Info Leak",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "51",
+        "code": "EJPT{card_data_50}",
+        "name": "Plaintext Card Data",
+        "category": "DB",
+        "difficulty": "Easy",
+        "points": "50"
+      },
+      {
+        "id": "52",
+        "code": "EJPT{jwt_user_forge_51}",
+        "name": "JWT Privilege Escalation",
+        "category": "JWT",
+        "difficulty": "Hard",
+        "points": "100"
+      },
+      {
+        "id": "53",
+        "code": "EJPT{idor_notes_52}",
+        "name": "IDOR Private Notes",
+        "category": "Access Control",
+        "difficulty": "Medium",
+        "points": "75"
+      },
+      {
+        "id": "54",
+        "code": "EJPT{xss_cookie_steal_53}",
+        "name": "XSS + Cookie Theft",
+        "category": "XSS",
+        "difficulty": "Hard",
+        "points": "100"
+      },
+      {
+        "id": "55",
+        "code": "EJPT{full_chain_54}",
+        "name": "Full Chain to Admin",
+        "category": "Chain",
+        "difficulty": "Hard",
+        "points": "150"
+      },
+      {
+        "id": "56",
+        "code": "EJPT{master_55}",
+        "name": "Master Flag (admin panel)",
+        "category": "Chain",
+        "difficulty": "Hard",
+        "points": "200"
+      }
+    ],
+    "notes": [
+      {
+        "id": "1",
+        "user_id": "1",
+        "title": "Root credentials",
+        "content": "EJPT{admin_note_48} - root/toor superuser account for lab.",
+        "is_private": "1"
+      },
+      {
+        "id": "2",
+        "user_id": "1",
+        "title": "DB backup location",
+        "content": "Backups live in /backups/db.sql (do not expose!).",
+        "is_private": "1"
+      },
+      {
+        "id": "3",
+        "user_id": "4",
+        "title": "Moderation queue",
+        "content": "Reported spam users: bob, charlie.",
+        "is_private": "0"
+      },
+      {
+        "id": "4",
+        "user_id": "8",
+        "title": "Personal note",
+        "content": "EJPT{idor_notes_52} - my private flag.",
+        "is_private": "1"
+      },
+      {
+        "id": "5",
+        "user_id": "9",
+        "title": "Bank details",
+        "content": "IBAN UZ11 0000 1111 2222 3333 4444",
+        "is_private": "1"
+      },
+      {
+        "id": "6",
+        "user_id": "12",
+        "title": "API notes",
+        "content": "Master key: AKIA-EJPT-LAB-0001",
+        "is_private": "1"
+      },
+      {
+        "id": "7",
+        "user_id": "2",
+        "title": "JWT config",
+        "content": "JWT secret: s3cr3t_jwt_key_2024",
+        "is_private": "1"
+      },
+      {
+        "id": "8",
+        "user_id": "15",
+        "title": "Reminder",
+        "content": "Change default admin password!",
+        "is_private": "0"
+      },
+      {
+        "id": "9",
+        "user_id": "20",
+        "title": "Secret project",
+        "content": "EJPT{full_chain_54} - chain reaches admin.",
+        "is_private": "1"
+      },
+      {
+        "id": "10",
+        "user_id": "25",
+        "title": "Pickup code",
+        "content": "Locker 4412, code 9981.",
+        "is_private": "1"
+      }
+    ],
+    "documents": [
+      {
+        "id": "1",
+        "user_id": "8",
+        "filename": "passport_scan.txt",
+        "content": "EJPT{idor_document_06} - PASSPORT: AA1234567",
+        "classification": "PRIVATE"
+      },
+      {
+        "id": "2",
+        "user_id": "9",
+        "filename": "salary_2024.txt",
+        "content": "Salary review notes, confidential.",
+        "classification": "PRIVATE"
+      },
+      {
+        "id": "3",
+        "user_id": "1",
+        "filename": "admin_manual.txt",
+        "content": "Admin manual: /administrator.php is the real panel.",
+        "classification": "INTERNAL"
+      },
+      {
+        "id": "4",
+        "user_id": "12",
+        "filename": "api_keys.txt",
+        "content": "AKIA-LAB-1012 / AKIA-LAB-1001",
+        "classification": "SECRET"
+      },
+      {
+        "id": "5",
+        "user_id": "15",
+        "filename": "network_map.txt",
+        "content": "10.10.10.0/24 lab range, 2004 web.",
+        "classification": "INTERNAL"
+      },
+      {
+        "id": "6",
+        "user_id": "20",
+        "filename": "flag_note.txt",
+        "content": "EJPT{path_traversal_11} - traversal works.",
+        "classification": "SECRET"
+      },
+      {
+        "id": "7",
+        "user_id": "22",
+        "filename": "backup_hint.txt",
+        "content": "/backups/app.py.bak contains source.",
+        "classification": "INTERNAL"
+      },
+      {
+        "id": "8",
+        "user_id": "25",
+        "filename": "token.txt",
+        "content": "EJPT{broken_auth_44} - token never expires.",
+        "classification": "SECRET"
+      }
+    ],
+    "api_tokens": [],
+    "sessions": [],
+    "invoices": [
+      {
+        "id": "1",
+        "user_id": "",
+        "reference": "",
+        "amount": "",
+        "paid": ""
+      }
+    ],
+    "orders": [
+      {
+        "id": "1",
+        "user_id": "",
+        "product": "",
+        "amount": "",
+        "status": "",
+        "card_number": "",
+        "created_at": ""
+      }
+    ],
+    "challenges": [
+      {
+        "id": "1",
+        "name": "",
+        "endpoint": "",
+        "method": "",
+        "difficulty": "",
+        "description": "",
+        "expected": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": "1",
+        "user_id": "",
+        "author": "",
+        "content": "",
+        "created_at": ""
+      }
+    ],
+    "products": [
+      {
+        "id": "1",
+        "name": "",
+        "price": "",
+        "description": ""
+      }
+    ],
+    "otp": [
+      {
+        "username": "admin",
+        "code": ""
+      }
+    ],
+    "reset_tokens": [],
+    "logs": [
+      {
+        "id": "1",
+        "ts": "",
+        "ip": "",
+        "method": "",
+        "path": "",
+        "level": "",
+        "message": ""
+      }
+    ]
+  },
+  "cracked": {
+    "admin": "admin123",
+    "root": "toor",
+    "sysadmin": "P@ssw0rd",
+    "moderator": "mod123",
+    "mod_john": "john2024",
+    "mod_olga": "qwerty123",
+    "mod_aziz": "aziz2024",
+    "alice": "alice123",
+    "bob": "bob2024",
+    "charlie": "charlie1",
+    "diana": "diana123",
+    "emil": "emil2024",
+    "farida": "farida123",
+    "guli": "guli2024",
+    "hasan": "hasan123",
+    "ibrohim": "ibrohim1",
+    "jamila": "jamila123",
+    "kamol": "kamol2024",
+    "laylo": "laylo123",
+    "mansur": "mansur1",
+    "nargiza": "nargiza1",
+    "olim": "olim2024",
+    "parvina": "parvina1",
+    "qodir": "qodir123",
+    "rustam": "rustam1",
+    "sabina": "sabina12",
+    "temur": "temur123",
+    "umid": "umid2024",
+    "vali": "vali1234",
+    "zulfiya": "zulfiya1",
+    "nodira": "nodira12",
+    "testuser": "test123"
+  },
+  "requests": 237,
+  "date": "2026-11-07T21:52:08.114882"
+}

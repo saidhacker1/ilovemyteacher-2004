@@ -1,0 +1,57 @@
+id,code,name,category,difficulty,points
+1,EJPT{sqli_union_01},SQLi UNION-based,SQL Injection,Easy,50
+2,EJPT{sqli_boolean_02},SQLi Boolean-based,SQL Injection,Medium,75
+3,EJPT{sqli_error_03},SQLi Error-based,SQL Injection,Easy,50
+4,EJPT{auth_bypass_04},Login Auth Bypass,Auth,Easy,50
+5,EJPT{idor_profile_05},IDOR Profile Read,Access Control,Easy,50
+6,EJPT{idor_document_06},IDOR Document Read,Access Control,Medium,75
+7,EJPT{idor_invoice_07},IDOR Predictable Invoice,Access Control,Easy,50
+8,EJPT{reflected_xss_08},Reflected XSS,XSS,Easy,50
+9,EJPT{stored_xss_09},Stored XSS,XSS,Medium,75
+10,EJPT{dom_xss_10},DOM-based XSS,XSS,Medium,75
+11,EJPT{path_traversal_11},Path Traversal,File,Medium,75
+12,EJPT{lfi_12},Local File Inclusion,File,Medium,75
+13,EJPT{csrf_email_13},CSRF Email Change,CSRF,Easy,50
+14,EJPT{csrf_transfer_14},CSRF Money Transfer,CSRF,Medium,75
+15,EJPT{open_redirect_15},Open Redirect,Web,Easy,50
+16,EJPT{bac_admin_16},Broken Access Control /admin,Access Control,Easy,50
+17,EJPT{weak_session_17},Weak Session Management,Session,Medium,75
+18,EJPT{cookie_admin_18},Cookie Manipulation -> Admin,Session,Medium,75
+19,EJPT{info_disclosure_19},Info Disclosure /server-info,Info Leak,Easy,50
+20,EJPT{dir_listing_20},Directory Listing,Info Leak,Easy,50
+21,EJPT{backup_exposure_21},Backup File Exposure,Info Leak,Medium,75
+22,EJPT{upload_bypass_22},Unrestricted File Upload,File,Medium,75
+23,EJPT{weak_md5_23},MD5 Unsalted Hashing,Crypto,Easy,50
+24,EJPT{hash_exposure_24},Hash Exposure via API,Info Leak,Easy,50
+25,EJPT{hardcoded_creds_25},Hardcoded Credentials,Info Leak,Easy,50
+26,EJPT{jwt_alg_none_26},JWT alg=none,JWT,Hard,100
+27,EJPT{jwt_weak_secret_27},JWT Weak Secret,JWT,Hard,100
+28,EJPT{api_key_leak_28},API Key in URL,API,Easy,50
+29,EJPT{excessive_data_29},Excessive Data Exposure,API,Easy,50
+30,EJPT{verbose_error_30},Verbose Error Messages,Config,Easy,50
+31,EJPT{misconfig_31},Security Misconfiguration,Config,Medium,75
+32,EJPT{cors_32},CORS Misconfiguration,Config,Medium,75
+33,EJPT{http_method_33},HTTP Method Misconfig,Config,Easy,50
+34,EJPT{no_headers_34},Missing Security Headers,Config,Easy,50
+35,EJPT{pwd_reset_35},Weak Password Reset,Auth,Hard,100
+36,EJPT{mass_assign_36},Mass Assignment,API,Hard,100
+37,EJPT{rate_limit_37},No Rate Limiting OTP,Auth,Medium,75
+38,EJPT{hidden_admin_38},Hidden Admin Panel,Access Control,Medium,75
+39,EJPT{db_design_39},Insecure DB Design,DB,Easy,50
+40,EJPT{user_enum_40},User Enumeration,Auth,Easy,50
+41,EJPT{predictable_ids_41},Predictable Resource IDs,Access Control,Easy,50
+42,EJPT{graphql_42},GraphQL Introspection,API,Medium,75
+43,EJPT{server_banner_43},Server Banner Disclosure,Info Leak,Easy,50
+44,EJPT{broken_auth_44},Broken Auth / No Expiry,Auth,Medium,75
+45,EJPT{session_forge_45},Session Forgery,Session,Hard,100
+46,EJPT{log_injection_46},Log Injection,Web,Medium,75
+47,EJPT{api_ssrf_47},API Improper Input Handling,API,Medium,75
+48,EJPT{admin_note_48},Admin Secret Note,Access Control,Medium,75
+49,EJPT{config_file_48},Config File Leak,Info Leak,Easy,50
+50,EJPT{db_dump_49},Database Dump,Info Leak,Medium,75
+51,EJPT{card_data_50},Plaintext Card Data,DB,Easy,50
+52,EJPT{jwt_user_forge_51},JWT Privilege Escalation,JWT,Hard,100
+53,EJPT{idor_notes_52},IDOR Private Notes,Access Control,Medium,75
+54,EJPT{xss_cookie_steal_53},XSS + Cookie Theft,XSS,Hard,100
+55,EJPT{full_chain_54},Full Chain to Admin,Chain,Hard,150
+56,EJPT{master_55},Master Flag (admin panel),Chain,Hard,200

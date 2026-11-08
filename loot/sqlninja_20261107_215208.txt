@@ -1,0 +1,228 @@
+==========================================================================
+  SQLNINJA v2.0 — EXPLOITATION REPORT
+==========================================================================
+Target : http://127.0.0.1:2004/product
+Param  : id
+Date   : 2026-11-07 21:52:08.125681
+DBMS   : SQLite 3.53.2
+DB file: /data/data/com.termux/files/home/teacher/lab.db
+Tables : 14
+Requests: 237
+
+
+--------------------------------------------------------------------------
+[users]  32 rows
+--------------------------------------------------------------------------
+id | username | password_md5 | password_sha1 | email | role | full_name | api_key | ssn | credit_card | balance | is_active | created_at
+1 | admin | 0192023a7bbd73250516f069df18b500 | f865b53623b121fd34ee5426c792e5c33af8c227 | admin@ejpt.lab | admin | Alisher Karimov | AKIA-LAB-1001 | 732-78-6994 | 4992565463516618 | 3526.12 | 1 | 2026-11-07T16:41:18.467673
+2 | root | 7b24afc8bc80e548d66c4e7ff72171c5 | 435b41068e8665513a20070c033b08b9c66e4332 | root@ejpt.lab | admin | Root Operator | AKIA-LAB-1002 | 456-61-7608 | 4405917325979438 | 429.77 | 1 | 2026-11-07T16:41:18.468540
+3 | sysadmin | 161ebd7d45089b3446ee4e0d86dbcf92 | 21bd12dc183f740ee76f27b78eb39c8ad972a757 | sysadmin@ejpt.lab | admin | Dilshod Rahimov | AKIA-LAB-1003 | 638-89-1718 | 4169003314379509 | 1734.6 | 1 | 2026-11-07T16:41:18.468678
+4 | moderator | 7da612c97fe645201451db5c7e9122a5 | 45ec342af28e206619ecda5de5ffb592c80abef1 | moderator@ejpt.lab | moderator | Madina Yusupova | AKIA-LAB-1004 | 685-39-1750 | 4843928882079708 | 2489.18 | 1 | 2026-11-07T16:41:18.468755
+5 | mod_john | 17817d22411f71469ae6cae66f226d34 | b3c81264c533c11cd6b5a8c7aed0975fcd90b61f | john@ejpt.lab | moderator | John Smith | AKIA-LAB-1005 | 870-93-6777 | 4894412025137840 | 2817.22 | 1 | 2026-11-07T16:41:18.468827
+6 | mod_olga | 3fc0a7acf087f549ac2b266baf94b8b1 | 5cec175b165e3d5e62c9e13ce848ef6feac81bff | olga@ejpt.lab | moderator | Olga Petrova | AKIA-LAB-1006 | 537-54-1702 | 4642075613594332 | 2471.93 | 1 | 2026-11-07T16:41:18.468895
+7 | mod_aziz | 8a0e4354502989b29aaa42ce5ec51c05 | e6b86cb12d03649363f288a976c213f80b72d035 | aziz@ejpt.lab | moderator | Aziz Toshpulatov | AKIA-LAB-1007 | 727-64-5143 | 4235693962795008 | 3039.74 | 1 | 2026-11-07T16:41:18.468961
+8 | alice | 7abdccbea8473767e91378e37850d296 | f0bd251b08338c230d420f33106faf13a12cace5 | alice@ejpt.lab | user | Alice Johnson | AKIA-LAB-1008 | 756-65-6028 | 4856534796629436 | 4084.25 | 1 | 2026-11-07T16:41:18.469026
+9 | bob | 77aed492c6707e62863e0a0e25fc0c8c | 3f3fc4af92754d7f735256a357ba8a85d52463f1 | bob@ejpt.lab | user | Bob Brown | AKIA-LAB-1009 | 187-68-1047 | 4514789620896371 | 3368.28 | 1 | 2026-11-07T16:41:18.469092
+10 | charlie | b6a412f7c63d71e4117daeb14e63f5cd | 65b3dd225fe19c6a9ec4383161ea00fe0f161157 | charlie@ejpt.lab | user | Charlie Davis | AKIA-LAB-1010 | 408-16-9055 | 4358549128908740 | 828.55 | 1 | 2026-11-07T16:41:18.469157
+11 | diana | ca7669cfc26196d72f7d5297cf1bc606 | 170f6f29d1d11a3433ea9e1635b5252d0e47a9d4 | diana@ejpt.lab | user | Diana Prince | AKIA-LAB-1011 | 577-20-9010 | 4702323307764506 | 1830.06 | 1 | 2026-11-07T16:41:18.469222
+12 | emil | 1505c18726808be3005f22a933be390b | 97c8aacbd19e422cdf09854e81003d0de7db9204 | emil@ejpt.lab | user | Emil Karimov | AKIA-LAB-1012 | 745-23-3783 | 4104323112869930 | 2210.08 | 1 | 2026-11-07T16:41:18.469287
+13 | farida | 7f239fc72efbd50fbc13280a4037b587 | 5073bb9b9b38e91b61d3beb56102f4b892b07d0b | farida@ejpt.lab | user | Farida Nazarova | AKIA-LAB-1013 | 796-63-6378 | 4877311125496003 | 390.06 | 1 | 2026-11-07T16:41:18.469350
+14 | guli | b3dc9524e002cc30e8da69a9a5d90b05 | 0281eb6d3e4a3c1681c300daf79d290a7eda5967 | guli@ejpt.lab | user | Gulnora Azizova | AKIA-LAB-1014 | 663-24-7524 | 4488420647505090 | 537.09 | 1 | 2026-11-07T16:41:18.469414
+15 | hasan | f690d3b8d4b51c1f189d886b7bab26b7 | 37becb6cd5d0f5d540386b3db2a91e322c637646 | hasan@ejpt.lab | user | Hasan Tursunov | AKIA-LAB-1015 | 910-16-7129 | 4696672072316318 | 3234.5 | 1 | 2026-11-07T16:41:18.469476
+16 | ibrohim | 0029b49deff7048f10fe8d1d7918c424 | 12f3bb3aa67b3eecd115998532ca6ed473bac923 | ibrohim@ejpt.lab | user | Ibrohim Sobirov | AKIA-LAB-1016 | 903-30-7846 | 4391382606884154 | 353.35 | 1 | 2026-11-07T16:41:18.469540
+17 | jamila | 061cb35fb58ff899f7142320e601fe54 | a77df00218fa9ac12ac14060d774d25b16a3dce7 | jamila@ejpt.lab | user | Jamila Ergasheva | AKIA-LAB-1017 | 826-72-7009 | 4505995318006860 | 4024.27 | 1 | 2026-11-07T16:41:18.469604
+18 | kamol | 49ce2fbfb6088b4e68340ffee9af6fd6 | 8e99c317a9e6d1f5d27eaa5589b1c39184d20118 | kamol@ejpt.lab | user | Kamol Ismoilov | AKIA-LAB-1018 | 100-92-1669 | 4967159897883179 | 3400.31 | 1 | 2026-11-07T16:41:18.469667
+19 | laylo | dea88d2eabf954e8ab548b84365b8667 | bb05b8b887ac2f5dd0c57487247a8dd21a296716 | laylo@ejpt.lab | user | Laylo Sharipova | AKIA-LAB-1019 | 890-56-7091 | 4022139622346751 | 1929.53 | 1 | 2026-11-07T16:41:18.469730
+20 | mansur | 7249fa3980c08f909ac4ee0faef483b7 | b33998d0f7ec935940984a87501ad3983e2968ff | mansur@ejpt.lab | user | Mansur Qodirov | AKIA-LAB-1020 | 321-30-8738 | 4481474213222000 | 1262.58 | 1 | 2026-11-07T16:41:18.469795
+21 | nargiza | 51cc380cfb82c7778585a07c09480ebd | f4e636a4b1fe489d29402e23d0642259efc72326 | nargiza@ejpt.lab | user | Nargiza Yuldasheva | AKIA-LAB-1021 | 460-25-6077 | 4318698966132538 | 4969.41 | 1 | 2026-11-07T16:41:18.469858
+22 | olim | 029bf3898019637cd5fc209357d3e916 | a03d029f825b30aab087324ec381e302e35a6e47 | olim@ejpt.lab | user | Olim Rasulov | AKIA-LAB-1022 | 158-41-2645 | 4485454046551894 | 2726.22 | 1 | 2026-11-07T16:41:18.470029
+23 | parvina | 6d6814105a1c94498842ec9c3aab1cda | 2d8acf7ef9bac2a04c1d810bff3fd37d93292bd6 | parvina@ejpt.lab | user | Parvina Saidova | AKIA-LAB-1023 | 135-51-1817 | 4267795296807193 | 4400.56 | 1 | 2026-11-07T16:41:18.470112
+24 | qodir | f619366092487a6bfb09f801f21f832f | a836da2069e2c2f759a158fc6a589f004197cec4 | qodir@ejpt.lab | user | Qodir Zokirov | AKIA-LAB-1024 | 648-59-6085 | 4387996979266621 | 1381.68 | 1 | 2026-11-07T16:41:18.470182
+25 | rustam | f1c42170a70f58e349ac1c995a9c6a84 | 76a103a48bfbe344eb3800b3b11a3e5c89c86496 | rustam@ejpt.lab | user | Rustam Bekmurodov | AKIA-LAB-1025 | 232-42-5434 | 4841192256281286 | 3524.57 | 1 | 2026-11-07T16:41:18.470247
+26 | sabina | 3f06c9f725627d1686d9a7bd0c2ec0cd | a250c9ff30dbace080917e4ddca8659d8aa5da6d | sabina@ejpt.lab | user | Sabina Umarova | AKIA-LAB-1026 | 455-95-8108 | 4804166987010932 | 1234.65 | 1 | 2026-11-07T16:41:18.470311
+27 | temur | dbdeb9e5e24290464cb5a29a26d4237d | 248cdff9ecec2961299d1c1b1dbb5e39cde84b6f | temur@ejpt.lab | user | Temur Aliyev | AKIA-LAB-1027 | 169-13-1907 | 4909890952953494 | 4694.76 | 1 | 2026-11-07T16:41:18.470378
+28 | umid | 219d486d12af2d0be924d3d1729f4e7b | 2d4965f417b6439a9bfdbc602bfac7be110bb709 | umid@ejpt.lab | user | Umid Xolmatov | AKIA-LAB-1028 | 415-88-7471 | 4520896166637130 | 3561.74 | 1 | 2026-11-07T16:41:18.470442
+29 | vali | df2a6ec51ae3f6dfb3df7db603a85cb5 | 51b64bab509121dbfe516c59059f83d80f8de9a3 | vali@ejpt.lab | user | Vali Ergashev | AKIA-LAB-1029 | 630-33-7599 | 4499547210845704 | 2884.04 | 1 | 2026-11-07T16:41:18.470505
+30 | zulfiya | 512297bf266b705d02295a6986454050 | 0be0e3c14ebd5ccff71f3882b12b4311cbb67915 | zulfiya@ejpt.lab | user | Zulfiya Nazarova | AKIA-LAB-1030 | 637-71-7444 | 4150038949747280 | 4722.07 | 1 | 2026-11-07T16:41:18.470567
+31 | nodira | 00d3f21a91fdc8b1dcef5429e55e3da6 | 3c0a8c3fa77aff74b2378570f90b66cc825dcec6 | nodira@ejpt.lab | user | Nodira Karimova | AKIA-LAB-1031 | 846-50-8556 | 4698903782744927 | 2711.73 | 1 | 2026-11-07T16:41:18.470630
+32 | testuser | cc03e747a6afbbcbf8be7668acfebee5 | 7288edd0fc3ffcbe93a0cf06e3568e28521687bc | test@ejpt.lab | user | Test User | AKIA-LAB-1032 | 415-60-9849 | 4798866025196518 | 4686.61 | 1 | 2026-11-07T16:41:18.470692
+
+--------------------------------------------------------------------------
+[flags]  56 rows
+--------------------------------------------------------------------------
+id | code | name | category | difficulty | points
+1 | EJPT{sqli_union_01} | SQLi UNION-based | SQL Injection | Easy | 50
+2 | EJPT{sqli_boolean_02} | SQLi Boolean-based | SQL Injection | Medium | 75
+3 | EJPT{sqli_error_03} | SQLi Error-based | SQL Injection | Easy | 50
+4 | EJPT{auth_bypass_04} | Login Auth Bypass | Auth | Easy | 50
+5 | EJPT{idor_profile_05} | IDOR Profile Read | Access Control | Easy | 50
+6 | EJPT{idor_document_06} | IDOR Document Read | Access Control | Medium | 75
+7 | EJPT{idor_invoice_07} | IDOR Predictable Invoice | Access Control | Easy | 50
+8 | EJPT{reflected_xss_08} | Reflected XSS | XSS | Easy | 50
+9 | EJPT{stored_xss_09} | Stored XSS | XSS | Medium | 75
+10 | EJPT{dom_xss_10} | DOM-based XSS | XSS | Medium | 75
+11 | EJPT{path_traversal_11} | Path Traversal | File | Medium | 75
+12 | EJPT{lfi_12} | Local File Inclusion | File | Medium | 75
+13 | EJPT{csrf_email_13} | CSRF Email Change | CSRF | Easy | 50
+14 | EJPT{csrf_transfer_14} | CSRF Money Transfer | CSRF | Medium | 75
+15 | EJPT{open_redirect_15} | Open Redirect | Web | Easy | 50
+16 | EJPT{bac_admin_16} | Broken Access Control /admin | Access Control | Easy | 50
+17 | EJPT{weak_session_17} | Weak Session Management | Session | Medium | 75
+18 | EJPT{cookie_admin_18} | Cookie Manipulation -> Admin | Session | Medium | 75
+19 | EJPT{info_disclosure_19} | Info Disclosure /server-info | Info Leak | Easy | 50
+20 | EJPT{dir_listing_20} | Directory Listing | Info Leak | Easy | 50
+21 | EJPT{backup_exposure_21} | Backup File Exposure | Info Leak | Medium | 75
+22 | EJPT{upload_bypass_22} | Unrestricted File Upload | File | Medium | 75
+23 | EJPT{weak_md5_23} | MD5 Unsalted Hashing | Crypto | Easy | 50
+24 | EJPT{hash_exposure_24} | Hash Exposure via API | Info Leak | Easy | 50
+25 | EJPT{hardcoded_creds_25} | Hardcoded Credentials | Info Leak | Easy | 50
+26 | EJPT{jwt_alg_none_26} | JWT alg=none | JWT | Hard | 100
+27 | EJPT{jwt_weak_secret_27} | JWT Weak Secret | JWT | Hard | 100
+28 | EJPT{api_key_leak_28} | API Key in URL | API | Easy | 50
+29 | EJPT{excessive_data_29} | Excessive Data Exposure | API | Easy | 50
+30 | EJPT{verbose_error_30} | Verbose Error Messages | Config | Easy | 50
+31 | EJPT{misconfig_31} | Security Misconfiguration | Config | Medium | 75
+32 | EJPT{cors_32} | CORS Misconfiguration | Config | Medium | 75
+33 | EJPT{http_method_33} | HTTP Method Misconfig | Config | Easy | 50
+34 | EJPT{no_headers_34} | Missing Security Headers | Config | Easy | 50
+35 | EJPT{pwd_reset_35} | Weak Password Reset | Auth | Hard | 100
+36 | EJPT{mass_assign_36} | Mass Assignment | API | Hard | 100
+37 | EJPT{rate_limit_37} | No Rate Limiting OTP | Auth | Medium | 75
+38 | EJPT{hidden_admin_38} | Hidden Admin Panel | Access Control | Medium | 75
+39 | EJPT{db_design_39} | Insecure DB Design | DB | Easy | 50
+40 | EJPT{user_enum_40} | User Enumeration | Auth | Easy | 50
+41 | EJPT{predictable_ids_41} | Predictable Resource IDs | Access Control | Easy | 50
+42 | EJPT{graphql_42} | GraphQL Introspection | API | Medium | 75
+43 | EJPT{server_banner_43} | Server Banner Disclosure | Info Leak | Easy | 50
+44 | EJPT{broken_auth_44} | Broken Auth / No Expiry | Auth | Medium | 75
+45 | EJPT{session_forge_45} | Session Forgery | Session | Hard | 100
+46 | EJPT{log_injection_46} | Log Injection | Web | Medium | 75
+47 | EJPT{api_ssrf_47} | API Improper Input Handling | API | Medium | 75
+48 | EJPT{admin_note_48} | Admin Secret Note | Access Control | Medium | 75
+49 | EJPT{config_file_48} | Config File Leak | Info Leak | Easy | 50
+50 | EJPT{db_dump_49} | Database Dump | Info Leak | Medium | 75
+51 | EJPT{card_data_50} | Plaintext Card Data | DB | Easy | 50
+52 | EJPT{jwt_user_forge_51} | JWT Privilege Escalation | JWT | Hard | 100
+53 | EJPT{idor_notes_52} | IDOR Private Notes | Access Control | Medium | 75
+54 | EJPT{xss_cookie_steal_53} | XSS + Cookie Theft | XSS | Hard | 100
+55 | EJPT{full_chain_54} | Full Chain to Admin | Chain | Hard | 150
+56 | EJPT{master_55} | Master Flag (admin panel) | Chain | Hard | 200
+
+--------------------------------------------------------------------------
+[notes]  10 rows
+--------------------------------------------------------------------------
+id | user_id | title | content | is_private
+1 | 1 | Root credentials | EJPT{admin_note_48} - root/toor superuser account for lab. | 1
+2 | 1 | DB backup location | Backups live in /backups/db.sql (do not expose!). | 1
+3 | 4 | Moderation queue | Reported spam users: bob, charlie. | 0
+4 | 8 | Personal note | EJPT{idor_notes_52} - my private flag. | 1
+5 | 9 | Bank details | IBAN UZ11 0000 1111 2222 3333 4444 | 1
+6 | 12 | API notes | Master key: AKIA-EJPT-LAB-0001 | 1
+7 | 2 | JWT config | JWT secret: s3cr3t_jwt_key_2024 | 1
+8 | 15 | Reminder | Change default admin password! | 0
+9 | 20 | Secret project | EJPT{full_chain_54} - chain reaches admin. | 1
+10 | 25 | Pickup code | Locker 4412, code 9981. | 1
+
+--------------------------------------------------------------------------
+[documents]  8 rows
+--------------------------------------------------------------------------
+id | user_id | filename | content | classification
+1 | 8 | passport_scan.txt | EJPT{idor_document_06} - PASSPORT: AA1234567 | PRIVATE
+2 | 9 | salary_2024.txt | Salary review notes, confidential. | PRIVATE
+3 | 1 | admin_manual.txt | Admin manual: /administrator.php is the real panel. | INTERNAL
+4 | 12 | api_keys.txt | AKIA-LAB-1012 / AKIA-LAB-1001 | SECRET
+5 | 15 | network_map.txt | 10.10.10.0/24 lab range, 2004 web. | INTERNAL
+6 | 20 | flag_note.txt | EJPT{path_traversal_11} - traversal works. | SECRET
+7 | 22 | backup_hint.txt | /backups/app.py.bak contains source. | INTERNAL
+8 | 25 | token.txt | EJPT{broken_auth_44} - token never expires. | SECRET
+
+--------------------------------------------------------------------------
+[api_tokens]  0 rows
+--------------------------------------------------------------------------
+(empty)
+
+--------------------------------------------------------------------------
+[sessions]  0 rows
+--------------------------------------------------------------------------
+(empty)
+
+--------------------------------------------------------------------------
+[invoices]  1 rows
+--------------------------------------------------------------------------
+id | user_id | reference | amount | paid
+1 |  |  |  | 
+
+--------------------------------------------------------------------------
+[orders]  1 rows
+--------------------------------------------------------------------------
+id | user_id | product | amount | status | card_number | created_at
+1 |  |  |  |  |  | 
+
+--------------------------------------------------------------------------
+[challenges]  1 rows
+--------------------------------------------------------------------------
+id | name | endpoint | method | difficulty | description | expected
+1 |  |  |  |  |  | 
+
+--------------------------------------------------------------------------
+[comments]  1 rows
+--------------------------------------------------------------------------
+id | user_id | author | content | created_at
+1 |  |  |  | 
+
+--------------------------------------------------------------------------
+[products]  1 rows
+--------------------------------------------------------------------------
+id | name | price | description
+1 |  |  | 
+
+--------------------------------------------------------------------------
+[otp]  1 rows
+--------------------------------------------------------------------------
+username | code
+admin | 
+
+--------------------------------------------------------------------------
+[reset_tokens]  0 rows
+--------------------------------------------------------------------------
+(empty)
+
+--------------------------------------------------------------------------
+[logs]  1 rows
+--------------------------------------------------------------------------
+id | ts | ip | method | path | level | message
+1 |  |  |  |  |  | 
+
+[CRACKED PASSWORDS]
+admin : admin123
+root : toor
+sysadmin : P@ssw0rd
+moderator : mod123
+mod_john : john2024
+mod_olga : qwerty123
+mod_aziz : aziz2024
+alice : alice123
+bob : bob2024
+charlie : charlie1
+diana : diana123
+emil : emil2024
+farida : farida123
+guli : guli2024
+hasan : hasan123
+ibrohim : ibrohim1
+jamila : jamila123
+kamol : kamol2024
+laylo : laylo123
+mansur : mansur1
+nargiza : nargiza1
+olim : olim2024
+parvina : parvina1
+qodir : qodir123
+rustam : rustam1
+sabina : sabina12
+temur : temur123
+umid : umid2024
+vali : vali1234
+zulfiya : zulfiya1
+nodira : nodira12
+testuser : test123
